@@ -1,0 +1,18 @@
+[Unit]
+Description=Airflow webserver daemon
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+WorkingDirectory=/home/ubuntu/airflow/dags/
+PIDFile=/run/airflow/webserver.pid
+User=ubuntu
+Group=ubuntu
+Type=simple
+ExecStart=/bin/bash -c 'source /home/ubuntu/venv/bin/activate ; airflow webserver'
+Restart=on-failure
+RestartSec=42s
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,16 +1,14 @@
 [Unit]
 Description=Airflow scheduler daemon
-After=network.target postgresql.service
+After=newtork.target postgresql.service
 Wants=postgresql.service
 
 [Service]
-WorkingDirectory=/home/cjo2mx/airflow/dags/
-User=cjo2mx
-Group=cjo2mx
+WorkingDirectory=/home/ubuntu/airflow/dags/
+User=ubuntu
+Group=ubuntu
 Type=simple
-ExecStart=/bin/bash -c 'source /home/cjo2mx/airflow/bin/activate ; airflow scheduler'
-#ExecReload=/bin/kill -s HUP $MAINPID
-#ExecStop=/bin/kill -s TERM $MAAINPID
+ExecStart=/bin/bash -c 'source /home/ubuntu/venv/bin/activate ; airflow scheduler'
 Restart=on-failure
 RestartSec=42s
 PrivateTmp=true
